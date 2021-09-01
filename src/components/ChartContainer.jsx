@@ -8,58 +8,60 @@ import LineChart from "../charts/LineChart";
 export default function ChartContainer({
   chartData,
   chartType,
-  chartContainerName,
+  chartID,
   series
 }) {
   const chartComponent = useRef(null);
 
   useLayoutEffect(() => {
-    createChart();
-
+    let chart = createChart();
+    chartComponent.current = chart
+    
     return () => {
-      chartComponent.current.dispose();
+      chart.dispose();
     };
   }, [chartData]);
 
   function createChart() {
     am4core.useTheme(am4themes_animated);
-    let chart = null;
+    
     switch (chartType) {
       case "column":
-        chart = new ColumnChart(
+        console.log("lol")
+       return new ColumnChart(
           chartData,
           "XYChart",
           series,
-          chartContainerName,
+          chartID,
           "date"
         );
-        break;
+
       case "line":
-        chart = new LineChart(
+       return new LineChart(
           chartData,
           "XYChart",
           series,
-          chartContainerName,
+          chartID,
           "date"
         );
-        break;
+
       case "donut":
-        chart = new CircleChart(
+       return new CircleChart(
           chartData,
           "DonutChart",
           series,
-          chartContainerName,
+          chartID,
           "date"
         );
-        break;
+
       default:
         break;
     }
 
     /* chart.data = chartData;
     chart.scrollbarX = new am4core.Scrollbar(); */
-    chartComponent.current = chart.newChart;
+   
   }
 
-  return <div id={chartContainerName}></div>;
+  return <div id={chartID}></div>;
 }

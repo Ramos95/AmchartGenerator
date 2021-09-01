@@ -10,15 +10,16 @@ class ColumnChart extends ChartGenerator {
     chartDataSample,
     chartType,
     series,
-    chartContainerName,
+    chartid,
     axisType
   ) {
-    super(chartDataSample, chartType, series, chartContainerName, axisType);
+    super(chartDataSample, chartType, series, chartid, axisType);
     this.instaceChart();
   }
 
   instaceChart() {
-    this.newChart = create(this.chartContainerName, XYChart);
+   
+    this.newChart = create(this.chartid, XYChart);
     this.newChart.data = this.chartDataSample;
     this.valueAxis = this.newChart.yAxes.push(new ValueAxis());
     this.createAxis("date");

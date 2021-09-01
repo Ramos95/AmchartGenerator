@@ -10,16 +10,16 @@ class CircleChart extends ChartGenerator {
     chartDataSample,
     chartType,
     series,
-    chartContainerName,
+    chartid,
     axisType
   ) {
-    super(chartDataSample, chartType, series, chartContainerName, axisType);
+    super(chartDataSample, chartType, series, chartid, axisType);
 
     this.instaceChart();
   }
 
   instaceChart() {
-    this.newChart = create(this.chartContainerName, PieChart);
+    this.newChart = create(this.chartid, PieChart);
     this.newChart.data = this.chartDataSample;
     this.newChart.innerRadius = percent(
       this.chartType === "DonutChart" ? 50 : 0

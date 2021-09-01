@@ -10,14 +10,14 @@ class ChartGenerator {
     chartDataSample,
     chartType,
     series,
-    chartContainerName,
+    chartID,
     axisType
   ) {
     this.chartDataSample = chartDataSample;
     this.chartType = chartType;
     this.axisType = axisType;
     this.series = series;
-    this.id = chartContainerName;
+    this.chartid = chartID;
     this.instaceChart();
   }
   newChart = null;

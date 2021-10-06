@@ -6,13 +6,7 @@ options.onlyShowOnViewport = true;
 options.commercialLicense = true;
 
 class CircleChart extends ChartGenerator {
-  constructor(
-    chartDataSample,
-    chartType,
-    series,
-    chartid,
-    axisType
-  ) {
+  constructor(chartDataSample, chartType, series, chartid, axisType) {
     super(chartDataSample, chartType, series, chartid, axisType);
 
     this.instaceChart();
@@ -25,6 +19,7 @@ class CircleChart extends ChartGenerator {
       this.chartType === "DonutChart" ? 50 : 0
     );
     this.createSeriesByName();
+    this.createCursor();
   }
 
   createSeriesByName() {
@@ -35,17 +30,14 @@ class CircleChart extends ChartGenerator {
 
   createSeries(seriesName) {
     let pieSeries = this.newChart.series.push(new PieSeries());
-    pieSeries.dataFields.value = "value";
+    console.log(pieSeries.dataFields);
+    pieSeries.dataFields.value = seriesName;
     pieSeries.dataFields.category = "category";
     pieSeries.name = seriesName;
     pieSeries.hiddenState.properties.opacity = 1;
     pieSeries.hiddenState.properties.endAngle = -90;
     pieSeries.hiddenState.properties.startAngle = -90;
-
-    this.newChart.legend = new Legend();
-    this.newChart.legend.maxHeight = 150;
-    this.newChart.legend.scrollable = true;
-    this.newChart.legend.maxWidth = undefined;
+    pieSeries.legendSettings.valueText = "[bold]{name}[/]";
   }
 }
 

@@ -6,26 +6,19 @@ options.onlyShowOnViewport = true;
 options.commercialLicense = true;
 
 class ColumnChart extends ChartGenerator {
-  constructor(
-    chartDataSample,
-    chartType,
-    series,
-    chartid,
-    axisType
-  ) {
+  constructor(chartDataSample, chartType, series, chartid, axisType) {
     super(chartDataSample, chartType, series, chartid, axisType);
     this.instaceChart();
   }
 
-  instaceChart() {
-   
+  /* instaceChart() {
     this.newChart = create(this.chartid, XYChart);
     this.newChart.data = this.chartDataSample;
     this.valueAxis = this.newChart.yAxes.push(new ValueAxis());
     this.createAxis("date");
     this.createSeriesByName();
     this.createCursor();
-  }
+  } */
 
   createSeriesByName() {
     for (let serie of this.series) {

@@ -2,44 +2,31 @@ import {
   DateAxis,
   CategoryAxis,
   XYCursor,
-  Legend
+  Legend,
 } from "@amcharts/amcharts4/charts";
+import { create } from "@amcharts/amcharts4/core";
+import { ValueAxis } from "@amcharts/amcharts4/charts";
 
 class ChartGenerator {
-  constructor(
-    chartDataSample,
-    chartType,
-    series,
-    chartID,
-    axisType
-  ) {
+  newChart = null;
+  valueAxis = null;
+
+  constructor(chartDataSample, chartType, series, chartID, axisType) {
     this.chartDataSample = chartDataSample;
     this.chartType = chartType;
     this.axisType = axisType;
     this.series = series;
     this.chartid = chartID;
-    this.instaceChart();
+    //this.instaceChart();
   }
-  newChart = null;
-  valueAxis = null;
 
   instaceChart() {
-    /*  let chart = null;
-    switch (this.chartType) {
-      case "XYChart":
-        chart = create(this.id, XYChart);
-        chart.data = this.chartDataSample;
-        this.newChart = chart;
-        break;
-      case "DonutChart":
-        chart = create(this.id, PieChart);
-        chart.data = this.chartDataSample;
-        this.newChart = chart;
-        break;
-      default:
-        console.log("lol");
-        break;
-    } */
+    this.newChart = create(this.chartid, this.chartType);
+    this.newChart.data = this.chartDataSample;
+    this.valueAxis = this.newChart.yAxes.push(new ValueAxis());
+    this.createAxis(this.axisType);
+    this.createSeriesByName();
+    this.createCursor();
   }
 
   createDateAxis() {

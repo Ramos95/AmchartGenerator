@@ -2,3 +2,13 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+.chart-wrapper {
+  height: 100vh;
+  width: 95vw;
+}
+
+.chart-container {
+  height: 600px;
+  width: 100%;
+}
